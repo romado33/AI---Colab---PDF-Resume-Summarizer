@@ -1,31 +1,33 @@
 # 📄 Resume QA with LangChain + Hugging Face + Gradio
 
-Conversational AI that reads resumes and answers questions like a recruiter. Upload any PDF resume, and ask questions like:
+Conversational AI that reads resumes and answers questions like a recruiter.  
+Upload any PDF resume and ask questions such as:
 
-- “What technologies does this person have experience with?”
-- “Summarize this resume in 3 bullet points.”
-- “List any certifications and degrees.”
+- What technologies does this person have experience with?
+- Summarize this resume in 3 bullet points.
+- List any certifications and degrees.
 
-Built with LangChain, Hugging Face Transformers, Gradio, and ChromaDB.
+Built using LangChain, Hugging Face Transformers, Gradio, and ChromaDB.
 
 ---
 
 ## 🚀 Features
 
-✅ PDF parsing  
-✅ Local embeddings via Sentence Transformers  
-✅ RAG (Retrieval-Augmented Generation) pipeline  
-✅ Secure Hugging Face key handling  
-✅ Web demo via Gradio  
-✅ Ready for Hugging Face Spaces or Streamlit
+- PDF parsing
+- Local embeddings via Sentence Transformers
+- RAG (Retrieval-Augmented Generation) pipeline
+- Secure Hugging Face key handling
+- Web demo via Gradio
+- Ready for Hugging Face Spaces or Streamlit
 
 ---
 
-## 🧠 Demo (Gradio)
+## 🧠 Demo
 
-[![Gradio Space](https://img.shields.io/badge/Launch-Demo-green?logo=gradio)](https://huggingface.co/spaces/YOUR_USERNAME/resume-qa)
+Try the hosted demo on Hugging Face Spaces:  
+`https://huggingface.co/spaces/YOUR_USERNAME/resume-qa`
 
-> Upload a resume and start asking questions in natural language.
+Upload a resume and start asking questions in natural language.
 
 ---
 
@@ -50,61 +52,96 @@ Edit
 
 ## 🔧 Setup Instructions
 
-### 🖥️ Local (Python 3.10+)
-```bash
+### Local (Python 3.10+)
+
+1. Clone the repository:
 git clone https://github.com/YOUR_USERNAME/resume-qa
 cd resume-qa
+
+markdown
+Copy
+Edit
+
+2. Install dependencies:
 pip install -r requirements.txt
-Set your Hugging Face token securely:
 
-bash
+javascript
+Copy
+Edit
+
+3. Set your Hugging Face token:
 export HUGGINGFACEHUB_API_TOKEN=your_token_here
-Then run the app:
 
-bash
+markdown
+Copy
+Edit
+
+4. Run the app:
 python app/main.py
-🧪 Google Colab
-Use the provided notebooks/Resume_QA_Colab.ipynb.
-You'll be prompted to upload a resume and enter your Hugging Face key as a secret.
 
-🌐 Deploy to Hugging Face Spaces
-Push your project to a public repo
+yaml
+Copy
+Edit
 
-Create a new Space
+---
 
-Select Gradio as the SDK
+### Google Colab
 
-In app/main.py, ensure gr.Interface(...) is returned at the end
+Use the notebook in `notebooks/Resume_QA_Colab.ipynb`.  
+You'll be prompted to upload a resume and enter your Hugging Face key via Colab secrets.
 
-Add HUGGINGFACEHUB_API_TOKEN as a secret
+---
 
-🌟 Example Questions
-What technologies does this person have experience with?
-Summarize this resume in 3 bullet points.
-What industries has this person worked in?
-List all certifications or degrees.
-What roles has this person held in the past?
-🔒 Security Notes
-API keys are never hardcoded – they're loaded securely via environment variables or secrets
+### Hugging Face Spaces
 
-Uploaded resumes are stored in memory or temp folders (never saved permanently)
+1. Push this project to a public GitHub repo.
+2. Create a new Space at Hugging Face.
+3. Choose **Gradio** as the SDK.
+4. Make sure `main.py` returns a `gr.Interface`.
+5. Add `HUGGINGFACEHUB_API_TOKEN` under **Secrets** in the Space settings.
 
-Hugging Face gated models are not used unless explicitly enabled
+---
 
-📦 Requirements
-nginx
-langchain
-langchain-community
-langchain-huggingface
-transformers
-sentence-transformers
-chromadb
-gradio
-pypdf
-🤝 Contributing
-PRs welcome! Please ensure your changes are well-tested and follow project structure.
+## 🌟 Example Questions
 
-👨‍💻 Author
-Rob Dods
-🟦 LinkedIn
-🐙 GitHub
+- What technologies does this person have experience with?
+- Summarize this resume in 3 bullet points.
+- What industries has this person worked in?
+- List all certifications or degrees.
+- What roles has this person held in the past?
+
+---
+
+## 🔒 Security Notes
+
+- API keys are never hardcoded; they're handled via environment variables or Colab/HF secrets.
+- Uploaded resumes are stored temporarily and not persisted.
+- Gated models are not used unless explicitly enabled.
+
+---
+
+## 📦 Requirements
+
+- langchain  
+- langchain-community  
+- langchain-huggingface  
+- transformers  
+- sentence-transformers  
+- chromadb  
+- gradio  
+- pypdf
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome!  
+Please ensure your code is well-documented and tested.
+
+---
+
+## 👨‍💻 Author
+
+Rob Dods  
+[GitHub](https://github.com/robdods)  
+[LinkedIn](https://linkedin.com/in/robdods)
