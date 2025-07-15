@@ -33,19 +33,24 @@ Upload a resume and start asking questions in natural language.
 
 ## 🔧 Setup Instructions
 
-### Local (Python 3.10+)
+### 🖥️ Local (Python 3.10+)
 
-1. Clone the repository:
-git clone [https://github.com/romado33/AI---Colab---PDF-Resume-Summarizer]
-cd resume-qa
+1. **Clone the repository:**
 
-2. Install dependencies:
+   ```bash
+   git clone https://github.com/romado33/AI---Colab---PDF-Resume-Summarizer
+   cd AI---Colab---PDF-Resume-Summarizer
+
+Install dependencies:
 pip install -r requirements.txt
 
-3. Set your Hugging Face token:
+Set your Hugging Face token (Linux/macOS):
 export HUGGINGFACEHUB_API_TOKEN=your_token_here
 
-4. Run the app:
+For Windows (Command Prompt):
+set HUGGINGFACEHUB_API_TOKEN=your_token_here
+
+Run the app:
 python app/main.py
 
 ---
