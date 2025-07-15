@@ -56,10 +56,7 @@ The model searches the document and returns a relevant, human-readable answer.
 
 ## 📦 Setup Instructions
 
-1. Open in **Google Colab**:  
-   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://your-colab-link-here)
-
-2. Install dependencies:
+Install dependencies:
    ```bash
    pip install -U langchain langchain-community transformers sentence-transformers chromadb
 Upload your resume PDF.
