@@ -9,7 +9,6 @@ app_file: app.py
 pinned: false
 ---
 
-
 # 📄 Resume QA with LangChain + Hugging Face + Gradio
 
 
