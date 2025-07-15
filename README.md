@@ -1,81 +1,110 @@
-# AI---Colab---PDF-Resume-Summarizer
+# 📄 Resume QA with LangChain + Hugging Face + Gradio
 
-# 🔍 Resume Question Answering with LangChain + Hugging Face
-
-This project demonstrates a **Conversational AI pipeline** that reads a PDF resume and answers natural language questions about its content. It uses:
-
-- **LangChain** for document loading, chunking, vector storage, and QA chaining
-- **Hugging Face Transformers** for embedding and LLM models
-- **Google Colab** for an easy, reproducible cloud notebook environment
-
----
-
-## 🧠 What It Does
-
-Upload a resume (PDF), and ask questions like:
+Conversational AI that reads resumes and answers questions like a recruiter. Upload any PDF resume, and ask questions like:
 
 - “What technologies does this person have experience with?”
 - “Summarize this resume in 3 bullet points.”
-- “List all certifications and degrees.”
-- “What industries has this person worked in?”
+- “List any certifications and degrees.”
 
-The model searches the document and returns a relevant, human-readable answer.
-
----
-
-## 🚀 How It Works
-
-1. **PDF Loading**  
-   Uses `PyPDFLoader` from LangChain to load the file.
-
-2. **Text Splitting**  
-   Chunks text into manageable pieces using `RecursiveCharacterTextSplitter`.
-
-3. **Embeddings + Vector Store**  
-   Generates dense vectors with Hugging Face’s `all-MiniLM-L6-v2` and stores them using `Chroma`.
-
-4. **Language Model (LLM)**  
-   Uses `google/flan-t5-base` from Hugging Face to generate answers based on vector search results.
-
-5. **Question Answering**  
-   Accepts natural language queries and returns results using LangChain's `RetrievalQA`.
+Built with LangChain, Hugging Face Transformers, Gradio, and ChromaDB.
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Features
 
-| Component            | Tool/Model                                |
-|----------------------|-------------------------------------------|
-| Vector Store         | Chroma                                    |
-| Embedding Model      | `sentence-transformers/all-MiniLM-L6-v2`  |
-| LLM                  | `google/flan-t5-base`                     |
-| LangChain Modules    | `DocumentLoader`, `TextSplitter`, `RetrievalQA`, `LLM` |
-| Runtime              | Google Colab (GPU/CPU)                    |
+✅ PDF parsing  
+✅ Local embeddings via Sentence Transformers  
+✅ RAG (Retrieval-Augmented Generation) pipeline  
+✅ Secure Hugging Face key handling  
+✅ Web demo via Gradio  
+✅ Ready for Hugging Face Spaces or Streamlit
 
 ---
 
-## 📦 Setup Instructions
+## 🧠 Demo (Gradio)
 
-Install dependencies:
-   ```bash
-   pip install -U langchain langchain-community transformers sentence-transformers chromadb
-Upload your resume PDF.
+[![Gradio Space](https://img.shields.io/badge/Launch-Demo-green?logo=gradio)](https://huggingface.co/spaces/YOUR_USERNAME/resume-qa)
 
-Paste your Hugging Face API token securely:
+> Upload a resume and start asking questions in natural language.
 
-python
+---
 
-from google.colab import userdata
-hf_token = userdata.get('HF_TOKEN')
-Run the cells and ask your questions!
+## 📂 Project Structure
 
-📸 Sample Output
+resume-qa/
+├── app/
+│ ├── main.py # CLI or Streamlit interface
+│ ├── utils.py # Parsing, embedding utils
+├── notebooks/
+│ └── Resume_QA_Colab.ipynb
+├── uploads/ # Temporary PDF storage (.gitignored)
+├── README.md
+├── requirements.txt
+└── .gitignore
 
-❓ What technologies does this person have experience with?
-💬 Python, Tableau, SQL, Excel, HTML, JavaScript...
+yaml
+Copy
+Edit
 
-❓ What are 3 career highlights from this resume?
-💬 1. Led implementation of workflow automation using Birst and Metabase.
-    2. Created AI-powered PDF templates for field data inspection.
-    3. Managed integrations and support for SaaS analytics products.
+---
 
+## 🔧 Setup Instructions
+
+### 🖥️ Local (Python 3.10+)
+```bash
+git clone https://github.com/YOUR_USERNAME/resume-qa
+cd resume-qa
+pip install -r requirements.txt
+Set your Hugging Face token securely:
+
+bash
+export HUGGINGFACEHUB_API_TOKEN=your_token_here
+Then run the app:
+
+bash
+python app/main.py
+🧪 Google Colab
+Use the provided notebooks/Resume_QA_Colab.ipynb.
+You'll be prompted to upload a resume and enter your Hugging Face key as a secret.
+
+🌐 Deploy to Hugging Face Spaces
+Push your project to a public repo
+
+Create a new Space
+
+Select Gradio as the SDK
+
+In app/main.py, ensure gr.Interface(...) is returned at the end
+
+Add HUGGINGFACEHUB_API_TOKEN as a secret
+
+🌟 Example Questions
+What technologies does this person have experience with?
+Summarize this resume in 3 bullet points.
+What industries has this person worked in?
+List all certifications or degrees.
+What roles has this person held in the past?
+🔒 Security Notes
+API keys are never hardcoded – they're loaded securely via environment variables or secrets
+
+Uploaded resumes are stored in memory or temp folders (never saved permanently)
+
+Hugging Face gated models are not used unless explicitly enabled
+
+📦 Requirements
+nginx
+langchain
+langchain-community
+langchain-huggingface
+transformers
+sentence-transformers
+chromadb
+gradio
+pypdf
+🤝 Contributing
+PRs welcome! Please ensure your changes are well-tested and follow project structure.
+
+👨‍💻 Author
+Rob Dods
+🟦 LinkedIn
+🐙 GitHub
