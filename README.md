@@ -36,7 +36,7 @@ Upload a resume and start asking questions in natural language.
 ### Local (Python 3.10+)
 
 1. Clone the repository:
-git clone https://github.com/YOUR_USERNAME/resume-qa
+git clone [https://github.com/romado33/AI---Colab---PDF-Resume-Summarizer]
 cd resume-qa
 
 2. Install dependencies:
