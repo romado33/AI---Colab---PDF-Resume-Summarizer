@@ -1,59 +1,46 @@
 # --- Install needed libraries ---
 !pip install -U langchain langchain-community langchain-huggingface transformers sentence-transformers chromadb pypdf gradio
 
-# ✅ STEP 2: Import necessary packages
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import CharacterTextSplitter
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
-from langchain_huggingface import HuggingFacePipeline
-from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
-from google.colab import userdata
-import tempfile, os
+from langchain_community.llms import HuggingFacePipeline
+from transformers import pipeline
+import tempfile
+import os
 
-# ✅ STEP 3: Set Hugging Face token (optional)
-hf_token = userdata.get("HUGGINGFACEHUB_API_TOKEN")
-if hf_token:
-    os.environ["HUGGINGFACEHUB_API_TOKEN"] = hf_token
-
-# ✅ STEP 4: Upload and read your PDF file
-from google.colab import files
-uploaded = files.upload()  # Upload e.g. "Rob Dods - 2025.pdf"
-pdf_filename = next(iter(uploaded))
-
-loader = PyPDFLoader(pdf_filename)
+# Load PDF
+loader = PyPDFLoader("Rob Dods - 2025.pdf")
 pages = loader.load()
 
-splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+# Split into manageable chunks
+splitter = CharacterTextSplitter(chunk_size=400, chunk_overlap=50)
 docs = splitter.split_documents(pages)
 
-# ✅ STEP 5: Embed using a lightweight, fast HF model
-embedding_model = "sentence-transformers/paraphrase-MiniLM-L3-v2"
+# Create embeddings
+embedding_model = "sentence-transformers/all-MiniLM-L6-v2"
 embeddings = HuggingFaceEmbeddings(model_name=embedding_model)
-
 persist_dir = tempfile.mkdtemp()
 db = Chroma.from_documents(docs, embeddings, persist_directory=persist_dir)
 
-# ✅ STEP 6: Load a lightweight free HF model
-model_id = "google/flan-t5-small"
-tokenizer = AutoTokenizer.from_pretrained(model_id)
-model = AutoModelForSeq2SeqLM.from_pretrained(model_id)
-
-pipe = pipeline("text2text-generation", model=model, tokenizer=tokenizer)
+# Build LLM pipeline
+pipe = pipeline("text-generation", model="tiiuae/falcon-7b-instruct", device_map="auto", max_new_tokens=256)
 llm = HuggingFacePipeline(pipeline=pipe)
 
-# ✅ STEP 7: Build retrieval QA chain
+# QA Chain
 qa = RetrievalQA.from_chain_type(llm=llm, retriever=db.as_retriever())
 
-# ✅ STEP 8: Ask questions!
+# Questions
 questions = [
     "What technologies does this person have experience with?",
-    "Summarize this resume in 3 bullet points.",
+    "What are 3 unique career highlights from this resume?",
     "What industries has this person worked in?",
 ]
 
+# Ask & display
 for q in questions:
-    print(f"\n❓ {q}")
-    answer = qa.invoke(q)
-    print("💬", answer)
+    response = qa.invoke(q)
+    print(f"\n❓ {q}\n💬 {response['result']}")
+
