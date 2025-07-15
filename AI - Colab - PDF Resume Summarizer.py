@@ -1,3 +1,6 @@
+# --- Install needed libraries ---
+!pip install -U langchain langchain-community langchain-huggingface transformers sentence-transformers chromadb pypdf gradio
+
 # ✅ STEP 2: Import necessary packages
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.embeddings import HuggingFaceEmbeddings
