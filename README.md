@@ -31,25 +31,6 @@ Upload a resume and start asking questions in natural language.
 
 ---
 
-## 📂 Project Structure
-
-resume-qa/
-├── app/
-│ ├── main.py # CLI or Streamlit interface
-│ ├── utils.py # Parsing, embedding utils
-├── notebooks/
-│ └── Resume_QA_Colab.ipynb
-├── uploads/ # Temporary PDF storage (.gitignored)
-├── README.md
-├── requirements.txt
-└── .gitignore
-
-yaml
-Copy
-Edit
-
----
-
 ## 🔧 Setup Instructions
 
 ### Local (Python 3.10+)
@@ -58,30 +39,14 @@ Edit
 git clone https://github.com/YOUR_USERNAME/resume-qa
 cd resume-qa
 
-markdown
-Copy
-Edit
-
 2. Install dependencies:
 pip install -r requirements.txt
-
-javascript
-Copy
-Edit
 
 3. Set your Hugging Face token:
 export HUGGINGFACEHUB_API_TOKEN=your_token_here
 
-markdown
-Copy
-Edit
-
 4. Run the app:
 python app/main.py
-
-yaml
-Copy
-Edit
 
 ---
 
@@ -143,5 +108,5 @@ Please ensure your code is well-documented and tested.
 ## 👨‍💻 Author
 
 Rob Dods  
-[GitHub](https://github.com/robdods)  
-[LinkedIn](https://linkedin.com/in/robdods)
+[GitHub](https://github.com/romado33)  
+[LinkedIn](https://linkedin.com/in/rob-dods)
