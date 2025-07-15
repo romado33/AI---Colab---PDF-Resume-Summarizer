@@ -1,5 +1,3 @@
-# 📄 Resume QA with LangChain + Hugging Face + Gradio
-
 ---
 title: Resume QA with LangChain
 emoji: 📄
@@ -10,6 +8,9 @@ sdk_version: "4.16.0"
 app_file: app.py
 pinned: false
 ---
+
+
+# 📄 Resume QA with LangChain + Hugging Face + Gradio
 
 
 Conversational AI that reads resumes and answers questions like a recruiter.  
